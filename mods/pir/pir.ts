@@ -12,5 +12,6 @@ pir.watch( (err, value) => { //Watch for hardware interrupts on pushButton GPIO,
 
 
 process.on('SIGINT', function () {
+    console.log("Unload PIR.");
     pir.unexport();
 });
