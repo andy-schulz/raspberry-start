@@ -22,6 +22,8 @@ for(var i=0; i<pinNumber; i++){
     pins[i] = new gpio(stepPins[i], 'out');
 }
 
+let counter = 0;
+
 var step = function(){
     for(var pin = 0; pin<4; pin++){
         if(Seq[stepCounter][pin] != 0){
@@ -37,8 +39,8 @@ var step = function(){
     if (stepCounter<0){
         stepCounter = stepCount;
     }
-
-    console.log(`DONE`);
+    counter++;
+    console.log(`DONE ${counter}`);
 
     setTimeout( function(){step()}, timeout );
 }
