@@ -18,14 +18,16 @@ Seq1.push([0,0,1,0]);
 Seq1.push([0,0,0,1]);
 
 
-async function setState(step: number[]) {
+async function setState() {
+    for(let step of Seq1) {
+        sm1.writeSync(step[0]);
+        sm2.writeSync(step[1]);
+        sm3.writeSync(step[2]);
+        sm4.writeSync(step[3]);
 
-    sm1.writeSync(step[0]);
-    sm2.writeSync(step[1]);
-    sm3.writeSync(step[2]);
-    sm4.writeSync(step[3]);
-
-    await sleep(1000);
+        console.log(`Step ${step} set.`);
+        await sleep(1000);
+    }
 
 }
 
@@ -37,11 +39,11 @@ function sleep(ms){
 }
 
 
-for(let step of Seq1) {
-    setState(step).then(() => {
-        console.log(`State ${step} set.`);
-    })
-}
+setState().then(() => {
+    console.log(`ENDE`);
+});
+
+
 
 
 
