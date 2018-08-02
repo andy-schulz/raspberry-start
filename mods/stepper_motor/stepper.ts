@@ -11,9 +11,13 @@ const sm4: Gpio = new Gpio(26, 'out', 'both');
 const StepCount1 = 4;
 const Seq1  = [];
 Seq1.push([1,0,0,0]);
+Seq1.push([1,1,0,0]);
 Seq1.push([0,1,0,0]);
+Seq1.push([0,1,1,0]);
 Seq1.push([0,0,1,0]);
+Seq1.push([0,0,1,1]);
 Seq1.push([0,0,0,1]);
+Seq1.push([1,0,0,1]);
 
 
 let counter = 0;
