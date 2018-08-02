@@ -37,6 +37,9 @@ var step = function(){
     if (stepCounter<0){
         stepCounter = stepCount;
     }
+
+    console.log(`DONE`);
+
     setTimeout( function(){step()}, timeout );
 }
 
