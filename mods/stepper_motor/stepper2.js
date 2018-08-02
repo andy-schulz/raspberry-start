@@ -1,7 +1,7 @@
 var gpio = require("onoff").Gpio;
 
 //use GPIO pin numbers
-var stepPins = [24,25,8,7];
+var stepPins = [6, 13, 19, 26];
 var pinNumber = stepPins.length;
 var pins = [];
 var stepCounter = 0;
