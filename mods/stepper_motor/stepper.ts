@@ -33,20 +33,21 @@ async function setState() {
             sm4.writeSync(step[3]);
 
             console.log(`Step ${step} set.`);
-            await sleep(10);
+            await sleep(1);
         }
         counter++;
     }
 
+    function sleep(ms){
+        return new Promise(resolve=>{
+            setTimeout(resolve,ms)
+        })
+    }
 
 }
 
 
-function sleep(ms){
-    return new Promise(resolve=>{
-        setTimeout(resolve,ms)
-    })
-}
+
 
 
 setState().then(() => {
