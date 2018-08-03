@@ -12,7 +12,11 @@ export class PirMotionDetector implements Subject{
     private currentMotion: number = 0;
     private logger = getLogger("PIRMotionDetector");
 
-    private pir: Gpio = new Gpio(23, 'in', 'both');
+    private pir: Gpio;
+
+    constructor() {
+        this.pir = new Gpio(23, 'in', 'both');
+    }
 
 
 
@@ -42,15 +46,14 @@ export class PirMotionDetector implements Subject{
         this.pir.watch( (err, value) => {
 
             if (err) {
-                console.error(`There was an error: ${err}`);
+                this.logger.error(`There was an error: ${err}`);
                 return;
             }
-            this.currentMotion = value;
-            this.notify();
-
+            this.setMotion(value);
+            this.logger.debug(`Motion Detected: ${this.currentMotion}`);
         });
 
-        process.on('SIGINT', function () {
+        process.on('SIGINT',  () => {
             console.log("Unload PIR.");
             this.pir.unexport();
         });
